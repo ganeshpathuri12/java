@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+// Class to handle input from the user
+class InputHandler {
+    private Scanner scanner;
+
+    public InputHandler() {
+        scanner = new Scanner(System.in);
+    }
+
+    public int getNumTerms() {
+        System.out.print("Enter the number of terms for the Fibonacci sequence: ");
+        return scanner.nextInt();
+    }
+fjghfhhj
+    public void closeScanner() {
+        scanner.close();
+    }
+}
+
+// Class to calculate the Fibonacci sequence
+class FibonacciCalculator {
+    private int numTerms;
+
+    public FibonacciCalculator(int numTerms) {
+        this.numTerms = numTerms;
+    }
+
+    public void calculateFibonacci() {
+        int[] fibSequence = new int[numTerms];
+        fibSequence[0] = 0;
+
+        if (numTerms > 1) {
+            fibSequence[1] = 1;
+
+            for (int i = 2; i < numTerms; i++) {
+                fibSequence[i] = fibSequence[i - 1] + fibSequence[i - 2];
+            }
+        }
+
+        displayFibonacci(fibSequence);
+    }
+
+    private void displayFibonacci(int[] fibSequence) {
+        System.out.println("Fibonacci Sequence:");
+        for (int i = 0; i < fibSequence.length; i++) {
+            System.out.println("Term " + (i + 1) + ": " + fibSequence[i]);
+        }
+    }
+}
+
+// Main application class
+public class FibonacciApp {
+    public static void main(String[] args) {
+        InputHandler inputHandler = new InputHandler();
+        int numTerms = inputHandler.getNumTerms();
+
+        if (numTerms <= 0) {
+            System.out.println("Number of terms must be positive.");
+            inputHandler.closeScanner();
+            return;
+        }
+
+        FibonacciCalculator calculator = new FibonacciCalculator(numTerms);
+        calculator.calculateFibonacci();
+
+        inputHandler.closeScanner();
+    }
+}
