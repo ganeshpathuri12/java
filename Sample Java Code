@@ -16,7 +16,7 @@ fjghfhhj
     public void closeScanner() {
         scanner.close();
     }
-}
+}fasfaafdasfasdfdsaf
 
 // Class to calculate the Fibonacci sequence
 class FibonacciCalculator {
